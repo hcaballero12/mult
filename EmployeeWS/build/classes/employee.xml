@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<employees>
+	<employee>
+	<name> Arthur Curry Orin </name>
+	<email> oring@gmail.com </email>
+	<dept-name> HR </dept-name>
+</employee>
+	<employee>
+	<name> Oliver Queen </name>
+	<email> queen@gmail.com </email>
+	<dept-name> Marketing </dept-name>
+</employee>
+	<employee>
+	<name> Bruce Wayne </name>
+	<email> wayne@wayne.com </email>
+	<dept-name> HR </dept-name>
+</employee>
+	<employee>
+	<name> Dinah Drake Lance </name>
+	<email> lance@wayne.com </email>
+	<dept-name> IT </dept-name>
+</employee>
+	<employee>
+	<name> Selena Kyle </name>
+	<email> kyle@wayne.com </email>
+	<dept-name> IT </dept-name>
+</employee>
+	<employee>
+	<name> Shayera Hol </name>
+	<email> hol@yahoo.com </email>
+	<dept-name> Marketing </dept-name>
+</employee>
+	<employee>
+	<name> Diana Prince </name>
+	<email>  prince@live.com </email>
+	<dept-name> HR </dept-name>
+</employee>
+	<employee>
+	<name> Kara Zor-El </name>
+	<email> kripton123@yahoo.com </email>
+	<dept-name> IT </dept-name>
+</employee>
+	<employee>
+	<name> Kal-El </name>
+	<email> kripton234@yahoo.com </email>
+	<dept-name> Marketing </dept-name>
+</employee>
+	<employee>
+	<name> Dick Grayson </name>
+	<email> wing@wayne.com </email>
+	<dept-name> Marketing </dept-name>
+</employee>
+
+</employees>

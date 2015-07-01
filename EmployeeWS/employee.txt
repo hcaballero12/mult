@@ -1,0 +1,10 @@
+Arthur Curry Orin;oring@gmail.com;HR
+Oliver Queen;queen@gmail.com;Marketing
+Bruce Wayne;wayne@wayne.com;HR
+Dinah Drake Lance;lance@wayne.com;IT
+Selena Kyle;kyle@wayne.com;IT
+Shayera Hol;hol@yahoo.com;Marketing
+Diana Prince; prince@live.com;HR
+Kara Zor-El;kripton123@yahoo.com;IT
+Kal-El;kripton234@yahoo.com;Marketing
+Dick Grayson;wing@wayne.com;Marketing
