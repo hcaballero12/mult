@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="Oracledatasrc" />
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">t3://localhost:7001</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id ="mysf" class = "org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name = "dataSource" ref = "datasource"></property>
+		<property name = "annotatedClasses">
+			<list>
+				<value>com.icare.dao.Department</value>
+				<value>com.icare.dao.Employee</value>
+				<value>com.icare.dao.Issue</value>
+			</list>
+		</property>
+		<property name = "hibernateProperties"> 
+				<value>hibernate.dialect = org.hibernate.dialect.Oracle10gDialect</value>
+		</property>
+		<property name = "SchemaUpdate"> <value>true</value></property>
+	</bean>
+	
+	<bean id = "mytemplate" class = "org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name = "sessionFactory" ref ="mysf"></property>
+	</bean>
+	
+	<bean id = "DaoImpl" class = "com.icare.dao.DAOImpl">
+		<property name = "hibtemplate" ref ="mytemplate"></property>
+	</bean>
+	
+	<bean name="/login" class= "com.icare.actions.LoginAction">
+		<property name = "dao" ref = "DaoImpl"/>
+	</bean>
+	
+	
+
+</beans>
