@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="Oracledatasrc" />
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">t3://localhost:7001</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id ="mysf" class = "org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name = "dataSource" ref = "datasource"></property>
+		<property name = "annotatedClasses">
+			<list>
+				<value>net.multivision.dao.Employee</value>
+			</list>
+		</property>
+		<property name = "hibernateProperties"> 
+				<value>hibernate.dialect = org.hibernate.dialect.Oracle10gDialect</value>
+		</property>
+		<property name = "SchemaUpdate"> <value>true</value></property>
+	</bean>
+	
+	<bean id = "mytemplate" class = "org.springframework.orm.hibernate3.HibernateTemplate">
+		<property name = "sessionFactory" ref ="mysf"></property>
+	</bean>
+	
+	<bean id = "personDaoImpl" class = "net.multivision.dao.EmployeeDAOImpl">
+		<property name = "hibtemplate" ref ="mytemplate"></property>
+		<property name = "emp" ref ="entity"></property>
+	</bean>
+	
+	<bean name="/login" class= "net.multivision.action.EmsAction">
+		<property name = "dao" ref = "personDaoImpl"/>
+	</bean>
+	
+	<bean name="entity" class= "net.multivision.dao.Employee"></bean>
+
+</beans>

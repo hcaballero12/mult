@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:aop="http://www.springframework.org/schema/aop"
+xmlns:tx="http://www.springframework.org/schema/tx"
+xsi:schemaLocation="
+http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/tx
+http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+http://www.springframework.org/schema/aop
+http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	
+	<bean id="datasource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="Oracledatasrc" />
+		<property name="jndiEnvironment">
+			<props>
+				<prop key="java.naming.factory.initial">weblogic.jndi.WLInitialContextFactory</prop>
+				<prop key="java.naming.provider.url">t3://localhost:7001</prop>
+			</props>
+		</property>
+	</bean>
+
+
+	<bean id ="mysf" class = "org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name = "dataSource" ref = "datasource"></property>
+		<property name = "annotatedClasses">
+			<list>
+				<value>net.multivision.orm.Employee</value>
+			</list>
+		</property>
+		<property name = "hibernateProperties"> 
+				<value>hibernate.dialect = org.hibernate.dialect.Oracle10gDialect</value>
+		</property>
+		<property name = "SchemaUpdate"> <value>true</value></property>
+	</bean>
+	
+<bean id = "employeeDaoImpl" class="net.multivision.orm.EmployeeDAOImpl">
+    <property name="sessionFactory" ref="mysf"/>
+</bean>    
+
+
+<!-- ******** TRANSACTION MANAGEMENT USING AOP *************-->
+
+<bean id="myTransactionManager"
+class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+<property name="sessionFactory" ref="mysf"/>
+</bean>
+
+
+<aop:config>
+	<aop:pointcut id="allMethods" expression="execution(* net.multivision.dao.EmployeeDAO.*(..))"/>
+	<aop:advisor advice-ref="txAdvice" pointcut-ref="allMethods"/>
+</aop:config>
+
+<!-- Spring rolls back transactions for runtime exceptions only NOT checked exceptions.
+If the propagation is set to SUPPORTS or NOT_SUPPORTED the transaction will not rollback
+in the event of a runtime exception.  Don't use wild cards for rollback exceptions.
+-->
+
+<tx:advice id="txAdvice" transaction-manager="myTransactionManager">
+<tx:attributes>
+	
+			
+	<tx:method	name= "authUser"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>
+	
+	<tx:method	name= "getClearance"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>	
+	
+	<tx:method	name= "create"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>	
+				
+	<tx:method	name= "read"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>
+				
+	<tx:method	name= "update"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>
+	
+	<tx:method	name= "delete"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>	
+	
+	<tx:method	name= "readAll"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>	
+				
+	<tx:method	name= "updateEmployee"
+				propagation="REQUIRES_NEW" 
+				isolation="READ_COMMITTED"
+				rollback-for="Exception"/>						
+				
+	
+					
+</tx:attributes>
+</tx:advice>
+
+
+
+	
+</beans>
