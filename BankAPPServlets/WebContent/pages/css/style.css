@@ -1,0 +1,116 @@
+
+
+#container-data{
+    
+    
+    background: #fff;
+    position: relative;
+    width: 100%;
+    height: 370px;
+    z-index: 5;
+    overflow: hidden;
+    box-shadow: 0 -2px 3px -2px rgba(0,0,0,0.2), 0 2px 2px rgba(0,0,0,0.1);
+    border-radius: 0 3px 3px 3px;
+    margin-top: -10px;
+
+
+}
+
+#form1 h2 h3{
+	color: #398080;
+}
+
+#form1 {
+	margin-left:10px;
+}
+
+#form1 p {
+	font-size: 14px;
+	line-height: 22px;
+	font-style: italic;
+	text-align: left;
+	margin: 0;
+	color: #777;
+	padding-left: 15px;
+	font-family: Cambria, Georgia, serif;
+	border-left: 8px solid rgba(63,148,148, 0.1);
+}
+
+#container{
+    
+    height:50px;
+    width: 100%;
+    background: #99CCCC;
+    
+    
+}
+
+
+#main-container{
+    
+    background: #99CCCC;
+    margin-left: 20%;
+    margin-right: auto;
+    height:400px;
+    width: 57%;
+    background:#fff;    
+}
+
+
+ .btn{
+ 
+
+  border-radius: 3px;
+  font-family: Georgia;
+  color: #ffffff;
+  font-size: 15px;
+  background: #5ba4a4;
+  padding: 10px 20px 10px 20px;
+  border: solid #398080 1px;
+  text-decoration: none;
+  background: #5ba4a4;
+    background: -moz-linear-gradient(top, #5ba4a4 0%, #4e8c8a 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#5ba4a4), color-stop(100%,#4e8c8a));
+    background: -webkit-linear-gradient(top, #5ba4a4 0%,#4e8c8a 100%);
+    background: -o-linear-gradient(top, #5ba4a4 0%,#4e8c8a 100%);
+    background: -ms-linear-gradient(top, #5ba4a4 0%,#4e8c8a 100%);
+    background: linear-gradient(top, #5ba4a4 0%,#4e8c8a 100%);
+    color: #385c5b;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgba(255,255,255,0.3);
+    border-radius: 3px 3px 0 0;
+    box-shadow: 2px 0 2px rgba(0,0,0,0.1), -2px 0 2px rgba(0,0,0,0.1);
+}
+
+ .btn:hover {
+  background: #398080;
+  text-decoration: none;
+}
+
+.btn:after{
+        content: '';
+    background: #fff;
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    display: block;
+}
+
+
+#btn-deposit{
+    margin-left:-5px;
+}
+
+
+#btn-balance{
+    margin-left:-5px;
+}
+
+#btn-withdraw{
+    margin-left:-5px;
+}
