@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
@@ -19,6 +21,9 @@ import business.Operations;
 
 public class BalanceServ extends HttpServlet {
 
+	
+	final static Logger logger = Logger.getLogger(BalanceServ.class); 
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -49,8 +54,7 @@ public class BalanceServ extends HttpServlet {
 		try {
 			resp.getWriter().write(new Gson().toJson(map));
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error( e );
 		}
 
 		

@@ -7,8 +7,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+import org.apache.log4j.Logger;
+
+import business.Balance;
+
 public class ConnectionObj {
 
+	final static Logger logger = Logger.getLogger(ConnectionObj.class);
 	private Connection conn;
 
 	public ConnectionObj() {
@@ -33,7 +38,7 @@ public class ConnectionObj {
 			setConn(DriverManager.getConnection(url, userData, password));
 
 		} catch (ClassNotFoundException | SQLException e) {
-			e.printStackTrace();
+			logger.error( e );
 
 		}
 

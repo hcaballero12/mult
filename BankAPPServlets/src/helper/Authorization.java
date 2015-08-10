@@ -25,13 +25,12 @@ public class Authorization {
 		for (Iterator iterator = list.iterator(); iterator.hasNext();) {
 			Customer cust = (Customer) iterator.next();
 			
+
 			if(cust.getUsername().equals(user) && cust.getPassword().equals(pass)){
 				
 				return cust;
 			}
-			else{
-				return null;
-			}
+
 			
 		}
 		return null;

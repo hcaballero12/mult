@@ -10,12 +10,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
+
 import business.Operations;
 
 import com.google.gson.Gson;
 
 public class Operation extends HttpServlet {
 
+	final static Logger logger = Logger.getLogger(Operation.class); 
+	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 			throws ServletException, IOException {
@@ -50,7 +54,7 @@ public class Operation extends HttpServlet {
 
 			write(resp, map);
 		} catch (Exception e) {
-			// TODO: handle exception
+			logger.error( e );
 		}
 
 	}
@@ -63,7 +67,7 @@ public class Operation extends HttpServlet {
 			resp.getWriter().write(new Gson().toJson(map));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.error( e );
 		}
 
 	}

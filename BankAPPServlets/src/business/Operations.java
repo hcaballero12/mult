@@ -17,7 +17,7 @@ public class Operations {
 		cust = dao.getCustomer(Long.parseLong(account));
 
 		// check for type of operation
-		if (operation.equals("deposit")) {
+		if (operation.equals("deposit") && amount >= 0) {
 
 			// update database
 			balance += amount;

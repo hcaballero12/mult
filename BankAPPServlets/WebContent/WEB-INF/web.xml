@@ -38,5 +38,25 @@
       <url-pattern>/balance</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+      <servlet-name>logoutServlet</servlet-name>
+      <servlet-class>actions.LogOut</servlet-class>
+  </servlet>
   
+  <servlet-mapping>
+      <servlet-name>logoutServlet</servlet-name>
+      <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+      <servlet-name>registerServlet</servlet-name>
+      <servlet-class>actions.Register</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+      <servlet-name>registerServlet</servlet-name>
+      <url-pattern>/register</url-pattern>
+  </servlet-mapping>
+  
+ 
 </web-app>

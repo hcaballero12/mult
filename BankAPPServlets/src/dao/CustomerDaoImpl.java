@@ -17,10 +17,14 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.Logger;
+
+import business.Balance;
 import entities.Customer;
 
 public class CustomerDaoImpl implements CustomerDao {
 
+	final static Logger logger = Logger.getLogger(CustomerDaoImpl.class);
 	public List<Customer> customers;
 	private Customer customer;
 	private Connection conn;
@@ -60,7 +64,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			return customers;
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error( e );
 			return null;
 		}
 		finally{
@@ -69,7 +73,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				stat.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e );
 			}
 		}
 
@@ -107,7 +111,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
 			return customer;
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error( e );
 			return null;
 		}
 		finally{
@@ -116,7 +120,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				statment.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e );
 			}
 		}
 
@@ -143,12 +147,13 @@ public class CustomerDaoImpl implements CustomerDao {
 			callableStatement.setString(4, customer.getUsername());
 			callableStatement.setString(5, customer.getPassword());
 			callableStatement.setDouble(6, customer.getBalance());
+			
 
-			// call the prepared statment
+			// call the prepared statement
 			callableStatement.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error( e );
 
 		}
 		finally{
@@ -157,7 +162,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				callableStatement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e );
 			}
 		}
 
@@ -183,7 +188,7 @@ public class CustomerDaoImpl implements CustomerDao {
 			callableStatement.executeUpdate();
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			logger.error( e );
 
 		}
 		finally{
@@ -192,7 +197,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				callableStatement.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e );
 			}
 		}
 	}
@@ -223,7 +228,7 @@ public class CustomerDaoImpl implements CustomerDao {
 
 			
 		}catch(Exception e){
-			e.printStackTrace();
+			logger.error( e );
 		}
 		finally{
 			try {
@@ -231,7 +236,7 @@ public class CustomerDaoImpl implements CustomerDao {
 				statment.close();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				logger.error( e );
 			}
 		}
 		

@@ -37,30 +37,38 @@ public class Login extends HttpServlet {
 
 		Authorization auth = new Authorization();
 		HttpSession session = req.getSession(true);
-
-		
 		RequestDispatcher rd;
+		
+		
+		//get username and password
 		username = req.getParameter("user");
 		password = req.getParameter("pass");
 		
-	
+		System.out.println(username);
+		System.out.println(password);
 		
 		Customer cust = auth.authorize(username, password);
 		//authenticate user
 		if(cust != null){
 			session.setAttribute("account", cust.getAccount());
+			session.setAttribute("first", cust.getFirstName());
 			session.setAttribute("last", cust.getLastName());
 			session.setAttribute("user", cust.getUsername());
 			session.setAttribute("balance", cust.getBalance());
+			//return to login page 
 			rd = req.getRequestDispatcher("pages/main.jsp");
 			rd.forward(req,  resp);
+
 		}
 		else{
 			//validate user
-			rd = req.getRequestDispatcher("pages/fail.jsp");
+			req.setAttribute("errorMessage", "Invalid user or password");
+			rd = req.getRequestDispatcher("pages/home.jsp");
 			rd.forward(req,  resp);
+
 		}
 		
+
 
 	}
 
